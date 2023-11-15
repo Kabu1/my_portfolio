@@ -2,9 +2,10 @@
 title: Hello, World!
 description: This is my very first blog post and I'm so excited to share it with you!
 date: 2023-05-23
-cover: neom-9f7oiGARGIg-unsplash.jpg
+cover: musa-ortac-F10MT27AgNI-unsplash.jpg
 tags:
   - blog
+  - DSA
 ---
 
 # Hello, World 👋🏻
