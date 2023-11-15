@@ -7,6 +7,11 @@ export default defineNuxtConfig({
     '@nuxt/content'
   ],
   content: {
+    highlight :{ 
+      theme: 'nord',
+      preload: ['ts', 'js','vue', 'bash', 'java', 'json']
+    }
+
     // ... options
   }
 })
