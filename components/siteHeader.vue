@@ -3,7 +3,7 @@ import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuIt
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/vue/24/outline'
 
 
-const route ={name: 'index'};
+const route =useRoute()
 const navigation = [
   { name: 'Home', href: '/', current: route.name == 'index' },
   { name: 'Blog', href: '/blog',  current: route.name.includes('blog')  },
