@@ -5,7 +5,12 @@ export default {
 </script>
 <template>
 <section>
-    <h1 class="text-5xl font-bold mt-20"> 👋 Hi there, I'm Benson Mboci!</h1>
+    <h1 class="text-5xl font-bold mt-20 font-stylish"> 👋 𝐻𝒾 𝓉𝒽𝑒𝓇𝑒, 𝐼'𝓂 𝐵𝑒𝓃𝓈𝑜𝓃 𝑀𝒷𝑜𝒸𝒾!
+    </h1>
+
+    <!-- <p class="my2 text-3em font-bold font-stylish text-primary">
+      👋 Hi there, welcome to Nuxt DevTools!
+    </p> -->
     <p class="text-base text-gray-900 p-2 italic">Vuejs Developer at Home</p>
 </section>
 <section class="flex flex-col md:flex-row">
@@ -22,10 +27,10 @@ export default {
             and challenges of adopting the new technology stack.
         </p>
     </div>
-        <img src="~/assets/img/blackavatar.jpeg" alt="myavatar" class="w-1/2 md:max-w-sm p-8 mx-auto">
+    <img src="~/assets/img/blackavatar.jpeg" alt="myavatar" class="w-1/2 md:max-w-sm p-8 mx-auto">
 </section>
 <section>
-<h2 class="text-3xl font-bold mt-8"> Latest Blog Post</h2>
+    <h2 class="text-3xl font-bold mt-8"> Latest Blog Post</h2>
 </section>
 </template>
 
