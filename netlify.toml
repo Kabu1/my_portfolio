@@ -1,2 +1,8 @@
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+  
 [functions.server]
   external_node_modules = ["tslib"]
