@@ -4,7 +4,8 @@ export default defineNuxtConfig({
   modules: [
     '@nuxtjs/tailwindcss',
     'nuxt-icon',
-    '@nuxt/content'
+    '@nuxt/content',
+    '@nuxtjs/apollo'
   ],
   content: {
     highlight :{ 
@@ -13,5 +14,13 @@ export default defineNuxtConfig({
     }
 
     // ... options
-  }
+  },
+  apollo: {
+    clients: {
+      default: {
+        tokenName: 'github-token',
+        httpEndpoint: 'https://api.github.com/graphql'
+      }
+    },
+  },
 })
