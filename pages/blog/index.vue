@@ -4,7 +4,7 @@ const {
 } = await useAsyncData('posts', () =>
     queryContent('/blog').find()
 )
-console.log('data', posts)
+// console.log('data', posts)
 </script>
 
 <template>

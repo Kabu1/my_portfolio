@@ -5,7 +5,7 @@ const {data :posts} = await useAsyncData('latest-posts', () =>
     .limit(3)
     .find()
 )
-console.log('are we here', posts)
+// console.log('are we here', posts)
 
 </script>
 <template>

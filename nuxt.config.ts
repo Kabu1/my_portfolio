@@ -7,6 +7,9 @@ export default defineNuxtConfig({
     '@nuxt/content',
     '@nuxtjs/apollo'
   ],
+  runtimeConfig: {
+    githubToken: process.env.GITHUB_TOKEN
+  },
   content: {
     highlight :{ 
       theme: 'nord',
