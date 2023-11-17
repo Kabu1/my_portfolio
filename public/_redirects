@@ -1,4 +1,0 @@
-[[redirects]]
-  from = "/welcome"
-  to = "/"
-  status = 200
