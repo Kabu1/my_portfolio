@@ -21,7 +21,7 @@
             })
             .findOne()
     })
-    console.log('Data:', data)
+    // console.log('Data:', data)
 </script>
 
 <template>

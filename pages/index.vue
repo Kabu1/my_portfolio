@@ -1,16 +1,17 @@
-<script>
-export default {
+<script setup> 
+const {data :posts} = await useAsyncData('latest-posts', () => 
+    queryContent('/blog')
+    .sort({data:1})
+    .limit(3)
+    .find()
+)
+console.log('are we here', posts)
 
-}
 </script>
 <template>
 <section>
     <h1 class="text-5xl font-bold mt-20 font-stylish"> 👋 𝐻𝒾 𝓉𝒽𝑒𝓇𝑒, 𝐼'𝓂 𝐵𝑒𝓃𝓈𝑜𝓃 𝑀𝒷𝑜𝒸𝒾!
     </h1>
-
-    <!-- <p class="my2 text-3em font-bold font-stylish text-primary">
-      👋 Hi there, welcome to Nuxt DevTools!
-    </p> -->
     <p class="text-base text-gray-900 p-2 italic">Vuejs Developer at Home</p>
 </section>
 <section class="flex flex-col md:flex-row">
@@ -31,8 +32,11 @@ export default {
 </section>
 <section>
     <h2 class="text-3xl font-bold mt-8"> Latest Blog Post</h2>
+    <div class="grid md:grid-cols-3 pt-8 gap-10 mb-5">
+        <post :posts="posts"/>
+    </div>
 </section>
-</template>
+</template> 
 
 <style>
 

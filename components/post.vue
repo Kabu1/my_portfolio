@@ -1,6 +1,6 @@
 <script setup>
     const props = defineProps(['posts'])
-    console.log('props jhh', props)
+    // console.log('props jhh', props)
 
 </script>
 <template>
