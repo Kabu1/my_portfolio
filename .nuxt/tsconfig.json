@@ -69,7 +69,7 @@
         "./icon-collections.mjs"
       ],
       "#mdc-imports": [
-        "./mdc-imports.mjs"
+        "file:///Users/bensonmboci/Desktop/project/portfolio/portfolio/.nuxt/mdc-imports.mjs"
       ],
       "#apollo": [
         "./apollo"

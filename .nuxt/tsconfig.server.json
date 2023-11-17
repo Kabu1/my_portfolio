@@ -58,7 +58,7 @@
         "./icon-collections"
       ],
       "#mdc-imports": [
-        "./mdc-imports"
+        "./file:/Users/bensonmboci/Desktop/project/portfolio/portfolio/.nuxt/mdc-imports"
       ],
       "#apollo": [
         "./apollo"
