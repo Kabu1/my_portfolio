@@ -1,0 +1,295 @@
+{
+  "resolvedId": "/Users/bensonmboci/Desktop/project/portfolio/portfolio/node_modules/@nuxtjs/mdc/dist/runtime/components/prose/ProseScript.vue?vue&type=script&setup=true&lang.ts",
+  "transforms": [
+    {
+      "name": "vite:vue",
+      "result": "import { defineComponent as _defineComponent } from 'vue'\nimport { ssrRenderAttrs as _ssrRenderAttrs } from \"vue/server-renderer\"\n\nimport { computed } from 'vue'\n\n\nexport default /*#__PURE__*/_defineComponent({\n  __name: 'ProseScript',\n  __ssrInlineRender: true,\n  props: {\n  src: {\n    type: String,\n    default: ''\n  }\n},\n  setup(__props) {\n\n\nconst isDev = computed(() => process.dev)\n\nreturn (_ctx: any,_push: any,_parent: any,_attrs: any) => {\n  if (isDev.value) {\n    _push(`<div${_ssrRenderAttrs(_attrs)}> Rendering the <code>script</code> element is dangerous and is disabled by default. Consider implementing your own <code>ProseScript</code> element to have control over script rendering. </div>`)\n  } else {\n    _push(`<!---->`)\n  }\n}\n}\n\n})",
+      "start": 1700234747135,
+      "end": 1700234747135,
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          "/Users/bensonmboci/Desktop/project/portfolio/portfolio/node_modules/@nuxtjs/mdc/dist/runtime/components/prose/ProseScript.vue"
+        ],
+        "sourcesContent": [
+          "<template>\n  <div v-if=\"isDev\">\n    Rendering the <code>script</code> element is dangerous and is disabled by default. Consider implementing your own <code>ProseScript</code> element to have control over script rendering.\n  </div>\n</template>\n\n<script setup lang=\"ts\">\nimport { computed } from 'vue'\n\ndefineProps({\n  src: {\n    type: String,\n    default: ''\n  }\n})\nconst isDev = computed(() => process.dev)\n</script>\n"
+        ],
+        "names": [],
+        "mappings": ";;;AAOA,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC9B;;;;;;;;;;;;AAFwB;AAQtB;AACF,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;;;;;;;;;;;"
+      }
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1700234747135,
+      "end": 1700234747135,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1700234747135,
+      "end": 1700234747135,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1700234747136,
+      "end": 1700234747136,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1700234747136,
+      "end": 1700234747136,
+      "order": "pre"
+    },
+    {
+      "name": "content-slot",
+      "start": 1700234747136,
+      "end": 1700234747136,
+      "order": "pre"
+    },
+    {
+      "name": "content-slot",
+      "start": 1700234747136,
+      "end": 1700234747136,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1700234747136,
+      "end": 1700234747136,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1700234747136,
+      "end": 1700234747136,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "result": "import { defineComponent as _defineComponent } from \"vue\";\nimport { ssrRenderAttrs as _ssrRenderAttrs } from \"vue/server-renderer\";\nimport { computed } from \"vue\";\nexport default /* @__PURE__ */ _defineComponent({\n  __name: \"ProseScript\",\n  __ssrInlineRender: true,\n  props: {\n    src: {\n      type: String,\n      default: \"\"\n    }\n  },\n  setup(__props) {\n    const isDev = computed(() => process.dev);\n    return (_ctx, _push, _parent, _attrs) => {\n      if (isDev.value) {\n        _push(`<div${_ssrRenderAttrs(_attrs)}> Rendering the <code>script</code> element is dangerous and is disabled by default. Consider implementing your own <code>ProseScript</code> element to have control over script rendering. </div>`);\n      } else {\n        _push(`<!---->`);\n      }\n    };\n  }\n});\n",
+      "start": 1700234747136,
+      "end": 1700234747201,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          "/Users/bensonmboci/Desktop/project/portfolio/portfolio/node_modules/@nuxtjs/mdc/dist/runtime/components/prose/ProseScript.vue?vue&type=script&setup=true&lang.ts"
+        ],
+        "sourcesContent": [
+          "import { defineComponent as _defineComponent } from 'vue'\nimport { ssrRenderAttrs as _ssrRenderAttrs } from \"vue/server-renderer\"\n\nimport { computed } from 'vue'\n\n\nexport default /*#__PURE__*/_defineComponent({\n  __name: 'ProseScript',\n  __ssrInlineRender: true,\n  props: {\n  src: {\n    type: String,\n    default: ''\n  }\n},\n  setup(__props) {\n\n\nconst isDev = computed(() => process.dev)\n\nreturn (_ctx: any,_push: any,_parent: any,_attrs: any) => {\n  if (isDev.value) {\n    _push(`<div${_ssrRenderAttrs(_attrs)}> Rendering the <code>script</code> element is dangerous and is disabled by default. Consider implementing your own <code>ProseScript</code> element to have control over script rendering. </div>`)\n  } else {\n    _push(`<!---->`)\n  }\n}\n}\n\n})"
+        ],
+        "mappings": "AAAA,SAAS,mBAAmB,wBAAwB;AACpD,SAAS,kBAAkB,uBAAuB;AAElD,SAAS,gBAAgB;AAGzB,eAA4B,iCAAiB;AAAA,EAC3C,QAAQ;AAAA,EACR,mBAAmB;AAAA,EACnB,OAAO;AAAA,IACP,KAAK;AAAA,MACH,MAAM;AAAA,MACN,SAAS;AAAA,IACX;AAAA,EACF;AAAA,EACE,MAAM,SAAS;AAGjB,UAAM,QAAQ,SAAS,MAAM,QAAQ,GAAG;AAExC,WAAO,CAAC,MAAU,OAAW,SAAa,WAAgB;AACxD,UAAI,MAAM,OAAO;AACf,cAAM,OAAO,gBAAgB,MAAM,CAAC,oMAAoM;AAAA,MAC1O,OAAO;AACL,cAAM,SAAS;AAAA,MACjB;AAAA,IACF;AAAA,EACA;AAEA,CAAC;",
+        "names": []
+      }
+    },
+    {
+      "name": "vite:json",
+      "start": 1700234747201,
+      "end": 1700234747201,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1700234747202,
+      "end": 1700234747202,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1700234747202,
+      "end": 1700234747202,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1700234747202,
+      "end": 1700234747202,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1700234747202,
+      "end": 1700234747202,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1700234747202,
+      "end": 1700234747202,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1700234747202,
+      "end": 1700234747202,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1700234747202,
+      "end": 1700234747202,
+      "order": "normal"
+    },
+    {
+      "name": "graphql",
+      "start": 1700234747202,
+      "end": 1700234747202,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1700234747202,
+      "end": 1700234747202,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1700234747202,
+      "end": 1700234747202,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1700234747202,
+      "end": 1700234747202,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "result": "import { defineComponent as _defineComponent } from \"vue\";\nimport { ssrRenderAttrs as _ssrRenderAttrs } from \"vue/server-renderer\";\nimport { computed } from \"vue\";\nexport default /* @__PURE__ */ _defineComponent({\n  __name: \"ProseScript\",\n  __ssrInlineRender: true,\n  props: {\n    src: {\n      type: String,\n      default: \"\"\n    }\n  },\n  setup(__props) {\n    const isDev = computed(() => false);\n    return (_ctx, _push, _parent, _attrs) => {\n      if (isDev.value) {\n        _push(`<div${_ssrRenderAttrs(_attrs)}> Rendering the <code>script</code> element is dangerous and is disabled by default. Consider implementing your own <code>ProseScript</code> element to have control over script rendering. </div>`);\n      } else {\n        _push(`<!---->`);\n      }\n    };\n  }\n});\n",
+      "start": 1700234747202,
+      "end": 1700234747202,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          "/Users/bensonmboci/Desktop/project/portfolio/portfolio/node_modules/@nuxtjs/mdc/dist/runtime/components/prose/ProseScript.vue?vue&type=script&setup=true&lang.ts"
+        ],
+        "names": [],
+        "mappings": "AAAA,MAAM,CAAC,CAAC,CAAC,eAAe,CAAC,EAAE,CAAC,gBAAgB,CAAC,CAAC,CAAC,IAAI,CAAC,CAAC,GAAG,CAAC,CAAC;AAC1D,MAAM,CAAC,CAAC,CAAC,cAAc,CAAC,EAAE,CAAC,eAAe,CAAC,CAAC,CAAC,IAAI,CAAC,CAAC,GAAG,CAAC,MAAM,CAAC,QAAQ,CAAC,CAAC;AACxE,MAAM,CAAC,CAAC,CAAC,QAAQ,CAAC,CAAC,CAAC,IAAI,CAAC,CAAC,GAAG,CAAC,CAAC;AAC/B,MAAM,CAAC,OAAO,CAAC,CAAC,CAAC,CAAC,CAAC,QAAQ,CAAC,CAAC,CAAC,CAAC,gBAAgB,CAAC,CAAC;AACjD,CAAC,CAAC,MAAM,CAAC,CAAC,CAAC,WAAW,CAAC,CAAC;AACxB,CAAC,CAAC,iBAAiB,CAAC,CAAC,IAAI,CAAC;AAC1B,CAAC,CAAC,KAAK,CAAC,CAAC,CAAC;AACV,CAAC,CAAC,CAAC,CAAC,GAAG,CAAC,CAAC,CAAC;AACV,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,IAAI,CAAC,CAAC,MAAM,CAAC;AACnB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,OAAO,CAAC,CAAC,CAAC,CAAC;AACjB,CAAC,CAAC,CAAC,CAAC,CAAC;AACL,CAAC,CAAC,CAAC,CAAC;AACJ,CAAC,CAAC,KAAK,CAAC,OAAO,CAAC,CAAC,CAAC;AAClB,CAAC,CAAC,CAAC,CAAC,KAAK,CAAC,KAAK,CAAC,CAAC,CAAC,QAAQ,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,KAAW,CAAC,CAAC;AAC9C,CAAC,CAAC,CAAC,CAAC,MAAM,CAAC,CAAC,IAAI,CAAC,CAAC,KAAK,CAAC,CAAC,OAAO,CAAC,CAAC,MAAM,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC9C,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,KAAK,CAAC,KAAK,CAAC,CAAC,CAAC;AACxB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,KAAK,CAAC,CAAC,CAAC,GAAG,CAAC,CAAC,eAAe,CAAC,MAAM,CAAC,CAAC,CAAC,CAAC,SAAS,CAAC,GAAG,CAAC,CAAC,IAAI,CAAC,MAAM,CAAC,CAAC,IAAI,CAAC,CAAC,OAAO,CAAC,EAAE,CAAC,SAAS,CAAC,GAAG,CAAC,EAAE,CAAC,QAAQ,CAAC,EAAE,CAAC,OAAO,CAAC,CAAC,QAAQ,CAAC,YAAY,CAAC,IAAI,CAAC,GAAG,CAAC,CAAC,IAAI,CAAC,WAAW,CAAC,CAAC,IAAI,CAAC,CAAC,OAAO,CAAC,EAAE,CAAC,IAAI,CAAC,OAAO,CAAC,IAAI,CAAC,MAAM,CAAC,SAAS,CAAC,CAAC,CAAC,CAAC,GAAG,CAAC,CAAC,CAAC,CAAC;AAClP,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,IAAI,CAAC,CAAC;AACd,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,KAAK,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACzB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACP,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACN,CAAC,CAAC,CAAC;AACH,CAAC,CAAC,CAAC;"
+      }
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1700234747202,
+      "end": 1700234747202,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1700234747202,
+      "end": 1700234747202,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1700234747202,
+      "end": 1700234747202,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1700234747202,
+      "end": 1700234747202,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1700234747202,
+      "end": 1700234747202,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1700234747202,
+      "end": 1700234747202,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1700234747202,
+      "end": 1700234747202,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1700234747202,
+      "end": 1700234747202,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1700234747202,
+      "end": 1700234747202,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1700234747202,
+      "end": 1700234747202,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1700234747202,
+      "end": 1700234747202,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1700234747203,
+      "end": 1700234747203,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1700234747203,
+      "end": 1700234747203,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1700234747203,
+      "end": 1700234747203,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1700234747203,
+      "end": 1700234747203,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-template",
+      "start": 1700234747203,
+      "end": 1700234747203,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1700234747203,
+      "end": 1700234747203,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1700234747203,
+      "end": 1700234747203,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1700234747203,
+      "end": 1700234747203,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1700234747203,
+      "end": 1700234747203,
+      "order": "normal"
+    }
+  ]
+}

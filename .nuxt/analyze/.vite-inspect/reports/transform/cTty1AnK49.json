@@ -1,0 +1,222 @@
+{
+  "resolvedId": "/Users/bensonmboci/Desktop/project/portfolio/portfolio/node_modules/@apollo/client/cache/inmemory/object-canon.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "import { __assign } from \"tslib\";\nimport { Trie } from \"@wry/trie\";\nimport { canUseWeakMap, canUseWeakSet, isNonNullObject as isObjectOrArray, } from \"../../utilities/index.js\";\nimport { isArray } from \"./helpers.js\";\nfunction shallowCopy(value) {\n    if (isObjectOrArray(value)) {\n        return isArray(value)\n            ? value.slice(0)\n            : __assign({ __proto__: Object.getPrototypeOf(value) }, value);\n    }\n    return value;\n}\nvar ObjectCanon = (function () {\n    function ObjectCanon() {\n        this.known = new (canUseWeakSet ? WeakSet : Set)();\n        this.pool = new Trie(canUseWeakMap);\n        this.passes = new WeakMap();\n        this.keysByJSON = new Map();\n        this.empty = this.admit({});\n    }\n    ObjectCanon.prototype.isKnown = function (value) {\n        return isObjectOrArray(value) && this.known.has(value);\n    };\n    ObjectCanon.prototype.pass = function (value) {\n        if (isObjectOrArray(value)) {\n            var copy = shallowCopy(value);\n            this.passes.set(copy, value);\n            return copy;\n        }\n        return value;\n    };\n    ObjectCanon.prototype.admit = function (value) {\n        var _this = this;\n        if (isObjectOrArray(value)) {\n            var original = this.passes.get(value);\n            if (original)\n                return original;\n            var proto = Object.getPrototypeOf(value);\n            switch (proto) {\n                case Array.prototype: {\n                    if (this.known.has(value))\n                        return value;\n                    var array = value.map(this.admit, this);\n                    var node = this.pool.lookupArray(array);\n                    if (!node.array) {\n                        this.known.add((node.array = array));\n                        if (globalThis.__DEV__ !== false) {\n                            Object.freeze(array);\n                        }\n                    }\n                    return node.array;\n                }\n                case null:\n                case Object.prototype: {\n                    if (this.known.has(value))\n                        return value;\n                    var proto_1 = Object.getPrototypeOf(value);\n                    var array_1 = [proto_1];\n                    var keys = this.sortedKeys(value);\n                    array_1.push(keys.json);\n                    var firstValueIndex_1 = array_1.length;\n                    keys.sorted.forEach(function (key) {\n                        array_1.push(_this.admit(value[key]));\n                    });\n                    var node = this.pool.lookupArray(array_1);\n                    if (!node.object) {\n                        var obj_1 = (node.object = Object.create(proto_1));\n                        this.known.add(obj_1);\n                        keys.sorted.forEach(function (key, i) {\n                            obj_1[key] = array_1[firstValueIndex_1 + i];\n                        });\n                        if (globalThis.__DEV__ !== false) {\n                            Object.freeze(obj_1);\n                        }\n                    }\n                    return node.object;\n                }\n            }\n        }\n        return value;\n    };\n    ObjectCanon.prototype.sortedKeys = function (obj) {\n        var keys = Object.keys(obj);\n        var node = this.pool.lookupArray(keys);\n        if (!node.keys) {\n            keys.sort();\n            var json = JSON.stringify(keys);\n            if (!(node.keys = this.keysByJSON.get(json))) {\n                this.keysByJSON.set(json, (node.keys = { sorted: keys, json: json }));\n            }\n        }\n        return node.keys;\n    };\n    return ObjectCanon;\n}());\nexport { ObjectCanon };\nexport var canonicalStringify = Object.assign(function (value) {\n    if (isObjectOrArray(value)) {\n        if (stringifyCanon === void 0) {\n            resetCanonicalStringify();\n        }\n        var canonical = stringifyCanon.admit(value);\n        var json = stringifyCache.get(canonical);\n        if (json === void 0) {\n            stringifyCache.set(canonical, (json = JSON.stringify(canonical)));\n        }\n        return json;\n    }\n    return JSON.stringify(value);\n}, {\n    reset: resetCanonicalStringify,\n});\nvar stringifyCanon;\nvar stringifyCache;\nfunction resetCanonicalStringify() {\n    stringifyCanon = new ObjectCanon();\n    stringifyCache = new (canUseWeakMap ? WeakMap : Map)();\n}\n//# sourceMappingURL=object-canon.js.map",
+      "start": 1700234742839,
+      "end": 1700234742900,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1700234742900,
+      "end": 1700234742900,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1700234742900,
+      "end": 1700234742900,
+      "order": "pre"
+    },
+    {
+      "name": "content-slot",
+      "start": 1700234742900,
+      "end": 1700234742900,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1700234742900,
+      "end": 1700234742900,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1700234742900,
+      "end": 1700234742900,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1700234742900,
+      "end": 1700234742900,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1700234742900,
+      "end": 1700234742900,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1700234742900,
+      "end": 1700234742900,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1700234742900,
+      "end": 1700234742900,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1700234742900,
+      "end": 1700234742900,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1700234742900,
+      "end": 1700234742901,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1700234742901,
+      "end": 1700234742901,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1700234742901,
+      "end": 1700234742901,
+      "order": "normal"
+    },
+    {
+      "name": "graphql",
+      "start": 1700234742901,
+      "end": 1700234742901,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1700234742901,
+      "end": 1700234742901,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1700234742901,
+      "end": 1700234742901,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1700234742901,
+      "end": 1700234742901,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1700234742901,
+      "end": 1700234742901,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1700234742901,
+      "end": 1700234742901,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1700234742901,
+      "end": 1700234742901,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1700234742901,
+      "end": 1700234742901,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1700234742901,
+      "end": 1700234742901,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1700234742901,
+      "end": 1700234742901,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1700234742901,
+      "end": 1700234742901,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1700234742901,
+      "end": 1700234742901,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1700234742901,
+      "end": 1700234742901,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1700234742901,
+      "end": 1700234742901,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1700234742901,
+      "end": 1700234742901,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1700234742901,
+      "end": 1700234742901,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1700234742901,
+      "end": 1700234742901,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1700234742901,
+      "end": 1700234742901,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1700234742901,
+      "end": 1700234742901,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1700234742901,
+      "end": 1700234742901,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1700234742901,
+      "end": 1700234742901,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1700234742901,
+      "end": 1700234742901,
+      "order": "normal"
+    }
+  ]
+}

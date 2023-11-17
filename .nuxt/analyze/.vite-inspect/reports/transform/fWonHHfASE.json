@@ -1,0 +1,222 @@
+{
+  "resolvedId": "/Users/bensonmboci/Desktop/project/portfolio/portfolio/node_modules/@heroicons/vue/24/outline/esm/BuildingStorefrontIcon.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "import { createElementVNode as _createElementVNode, openBlock as _openBlock, createElementBlock as _createElementBlock } from \"vue\"\n\nexport default function render(_ctx, _cache) {\n  return (_openBlock(), _createElementBlock(\"svg\", {\n    xmlns: \"http://www.w3.org/2000/svg\",\n    fill: \"none\",\n    viewBox: \"0 0 24 24\",\n    \"stroke-width\": \"1.5\",\n    stroke: \"currentColor\",\n    \"aria-hidden\": \"true\"\n  }, [\n    _createElementVNode(\"path\", {\n      \"stroke-linecap\": \"round\",\n      \"stroke-linejoin\": \"round\",\n      d: \"M13.5 21v-7.5a.75.75 0 01.75-.75h3a.75.75 0 01.75.75V21m-4.5 0H2.36m11.14 0H18m0 0h3.64m-1.39 0V9.349m-16.5 11.65V9.35m0 0a3.001 3.001 0 003.75-.615A2.993 2.993 0 009.75 9.75c.896 0 1.7-.393 2.25-1.016a2.993 2.993 0 002.25 1.016c.896 0 1.7-.393 2.25-1.016a3.001 3.001 0 003.75.614m-16.5 0a3.004 3.004 0 01-.621-4.72L4.318 3.44A1.5 1.5 0 015.378 3h13.243a1.5 1.5 0 011.06.44l1.19 1.189a3 3 0 01-.621 4.72m-13.5 8.65h3.75a.75.75 0 00.75-.75V13.5a.75.75 0 00-.75-.75H6.75a.75.75 0 00-.75.75v3.75c0 .415.336.75.75.75z\"\n    })\n  ]))\n}",
+      "start": 1700234743747,
+      "end": 1700234743767,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1700234743767,
+      "end": 1700234743767,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1700234743767,
+      "end": 1700234743767,
+      "order": "pre"
+    },
+    {
+      "name": "content-slot",
+      "start": 1700234743767,
+      "end": 1700234743767,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1700234743767,
+      "end": 1700234743767,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1700234743767,
+      "end": 1700234743767,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1700234743767,
+      "end": 1700234743767,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1700234743767,
+      "end": 1700234743767,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1700234743767,
+      "end": 1700234743767,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1700234743767,
+      "end": 1700234743767,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1700234743767,
+      "end": 1700234743767,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1700234743767,
+      "end": 1700234743767,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1700234743767,
+      "end": 1700234743767,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1700234743767,
+      "end": 1700234743767,
+      "order": "normal"
+    },
+    {
+      "name": "graphql",
+      "start": 1700234743767,
+      "end": 1700234743767,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1700234743767,
+      "end": 1700234743767,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1700234743767,
+      "end": 1700234743767,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1700234743767,
+      "end": 1700234743767,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1700234743767,
+      "end": 1700234743767,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1700234743767,
+      "end": 1700234743767,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1700234743767,
+      "end": 1700234743767,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1700234743767,
+      "end": 1700234743767,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1700234743767,
+      "end": 1700234743767,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1700234743767,
+      "end": 1700234743768,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1700234743768,
+      "end": 1700234743768,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1700234743768,
+      "end": 1700234743768,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1700234743768,
+      "end": 1700234743768,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1700234743768,
+      "end": 1700234743768,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1700234743768,
+      "end": 1700234743768,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1700234743768,
+      "end": 1700234743768,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1700234743768,
+      "end": 1700234743768,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1700234743768,
+      "end": 1700234743768,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1700234743768,
+      "end": 1700234743768,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1700234743768,
+      "end": 1700234743768,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1700234743768,
+      "end": 1700234743768,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1700234743768,
+      "end": 1700234743768,
+      "order": "normal"
+    }
+  ]
+}

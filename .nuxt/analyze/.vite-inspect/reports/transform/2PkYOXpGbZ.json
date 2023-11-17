@@ -1,0 +1,222 @@
+{
+  "resolvedId": "/Users/bensonmboci/Desktop/project/portfolio/portfolio/node_modules/@apollo/client/link/http/selectHttpOptionsAndBody.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "import { __assign, __spreadArray } from \"tslib\";\nimport { print } from \"../../utilities/index.js\";\nvar defaultHttpOptions = {\n    includeQuery: true,\n    includeExtensions: false,\n    preserveHeaderCase: false,\n};\nvar defaultHeaders = {\n    accept: \"*/*\",\n    \"content-type\": \"application/json\",\n};\nvar defaultOptions = {\n    method: \"POST\",\n};\nexport var fallbackHttpConfig = {\n    http: defaultHttpOptions,\n    headers: defaultHeaders,\n    options: defaultOptions,\n};\nexport var defaultPrinter = function (ast, printer) { return printer(ast); };\nexport function selectHttpOptionsAndBody(operation, fallbackConfig) {\n    var configs = [];\n    for (var _i = 2; _i < arguments.length; _i++) {\n        configs[_i - 2] = arguments[_i];\n    }\n    configs.unshift(fallbackConfig);\n    return selectHttpOptionsAndBodyInternal.apply(void 0, __spreadArray([operation,\n        defaultPrinter], configs, false));\n}\nexport function selectHttpOptionsAndBodyInternal(operation, printer) {\n    var configs = [];\n    for (var _i = 2; _i < arguments.length; _i++) {\n        configs[_i - 2] = arguments[_i];\n    }\n    var options = {};\n    var http = {};\n    configs.forEach(function (config) {\n        options = __assign(__assign(__assign({}, options), config.options), { headers: __assign(__assign({}, options.headers), config.headers) });\n        if (config.credentials) {\n            options.credentials = config.credentials;\n        }\n        http = __assign(__assign({}, http), config.http);\n    });\n    if (options.headers) {\n        options.headers = removeDuplicateHeaders(options.headers, http.preserveHeaderCase);\n    }\n    var operationName = operation.operationName, extensions = operation.extensions, variables = operation.variables, query = operation.query;\n    var body = { operationName: operationName, variables: variables };\n    if (http.includeExtensions)\n        body.extensions = extensions;\n    if (http.includeQuery)\n        body.query = printer(query, print);\n    return {\n        options: options,\n        body: body,\n    };\n}\nfunction removeDuplicateHeaders(headers, preserveHeaderCase) {\n    if (!preserveHeaderCase) {\n        var normalizedHeaders_1 = Object.create(null);\n        Object.keys(Object(headers)).forEach(function (name) {\n            normalizedHeaders_1[name.toLowerCase()] = headers[name];\n        });\n        return normalizedHeaders_1;\n    }\n    var headerData = Object.create(null);\n    Object.keys(Object(headers)).forEach(function (name) {\n        headerData[name.toLowerCase()] = {\n            originalName: name,\n            value: headers[name],\n        };\n    });\n    var normalizedHeaders = Object.create(null);\n    Object.keys(headerData).forEach(function (name) {\n        normalizedHeaders[headerData[name].originalName] = headerData[name].value;\n    });\n    return normalizedHeaders;\n}\n//# sourceMappingURL=selectHttpOptionsAndBody.js.map",
+      "start": 1700234742844,
+      "end": 1700234742904,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1700234742904,
+      "end": 1700234742904,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1700234742904,
+      "end": 1700234742904,
+      "order": "pre"
+    },
+    {
+      "name": "content-slot",
+      "start": 1700234742904,
+      "end": 1700234742904,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1700234742904,
+      "end": 1700234742904,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1700234742904,
+      "end": 1700234742904,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1700234742904,
+      "end": 1700234742904,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1700234742904,
+      "end": 1700234742904,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1700234742904,
+      "end": 1700234742904,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1700234742904,
+      "end": 1700234742904,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1700234742904,
+      "end": 1700234742904,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1700234742904,
+      "end": 1700234742904,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1700234742904,
+      "end": 1700234742904,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1700234742904,
+      "end": 1700234742904,
+      "order": "normal"
+    },
+    {
+      "name": "graphql",
+      "start": 1700234742904,
+      "end": 1700234742904,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1700234742904,
+      "end": 1700234742904,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1700234742904,
+      "end": 1700234742904,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1700234742904,
+      "end": 1700234742904,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1700234742904,
+      "end": 1700234742904,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1700234742904,
+      "end": 1700234742904,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1700234742904,
+      "end": 1700234742904,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1700234742904,
+      "end": 1700234742904,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1700234742904,
+      "end": 1700234742904,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1700234742904,
+      "end": 1700234742905,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1700234742905,
+      "end": 1700234742905,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1700234742905,
+      "end": 1700234742905,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1700234742905,
+      "end": 1700234742905,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1700234742905,
+      "end": 1700234742905,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1700234742905,
+      "end": 1700234742905,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1700234742905,
+      "end": 1700234742905,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1700234742905,
+      "end": 1700234742905,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1700234742905,
+      "end": 1700234742905,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1700234742905,
+      "end": 1700234742905,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1700234742905,
+      "end": 1700234742905,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1700234742905,
+      "end": 1700234742905,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1700234742905,
+      "end": 1700234742905,
+      "order": "normal"
+    }
+  ]
+}

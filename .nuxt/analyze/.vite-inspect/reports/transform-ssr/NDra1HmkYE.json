@@ -1,0 +1,273 @@
+{
+  "resolvedId": "/Users/bensonmboci/Desktop/project/portfolio/portfolio/node_modules/@nuxt/content/dist/runtime/legacy/composables/navigation.mjs",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "import { hash } from \"ohash\";\nimport { useRuntimeConfig } from \"#app\";\nimport { encodeQueryParams } from \"../../utils/query.mjs\";\nimport { jsonStringify } from \"../../utils/json.mjs\";\nimport { addPrerenderPath, shouldUseClientDB, withContentBase } from \"../../composables/utils.mjs\";\nimport { useContentPreview } from \"../../composables/preview.mjs\";\nimport { queryContent } from \"./query.mjs\";\nexport const fetchContentNavigation = async (queryBuilder) => {\n  const { content } = useRuntimeConfig().public;\n  if (typeof queryBuilder?.params !== \"function\") {\n    queryBuilder = queryContent(queryBuilder);\n  }\n  const params = queryBuilder.params();\n  const apiPath = content.experimental.stripQueryParameters ? withContentBase(`/navigation/${process.dev ? \"_\" : `${hash(params)}.${content.integrity}`}/${encodeQueryParams(params)}.json`) : withContentBase(process.dev ? `/navigation/${hash(params)}` : `/navigation/${hash(params)}.${content.integrity}.json`);\n  if (!process.dev && process.server) {\n    addPrerenderPath(apiPath);\n  }\n  if (shouldUseClientDB()) {\n    const generateNavigation = await import(\"./client-db\").then((m) => m.generateNavigation);\n    return generateNavigation(params);\n  }\n  const data = await $fetch(apiPath, {\n    method: \"GET\",\n    responseType: \"json\",\n    params: content.experimental.stripQueryParameters ? void 0 : {\n      _params: jsonStringify(params),\n      previewToken: useContentPreview().getPreviewToken()\n    }\n  });\n  if (typeof data === \"string\" && data.startsWith(\"<!DOCTYPE html>\")) {\n    throw new Error(\"Not found\");\n  }\n  return data;\n};\n",
+      "start": 1700234746783,
+      "end": 1700234746949,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1700234746949,
+      "end": 1700234746949,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1700234746949,
+      "end": 1700234746949,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1700234746949,
+      "end": 1700234746949,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1700234746949,
+      "end": 1700234746949,
+      "order": "pre"
+    },
+    {
+      "name": "content-slot",
+      "start": 1700234746949,
+      "end": 1700234746949,
+      "order": "pre"
+    },
+    {
+      "name": "content-slot",
+      "start": 1700234746949,
+      "end": 1700234746949,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1700234746949,
+      "end": 1700234746949,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1700234746949,
+      "end": 1700234746949,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1700234746949,
+      "end": 1700234746949,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1700234746949,
+      "end": 1700234746949,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1700234746949,
+      "end": 1700234746949,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1700234746949,
+      "end": 1700234746949,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1700234746949,
+      "end": 1700234746949,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1700234746949,
+      "end": 1700234746949,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1700234746949,
+      "end": 1700234746949,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1700234746949,
+      "end": 1700234746949,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1700234746949,
+      "end": 1700234746949,
+      "order": "normal"
+    },
+    {
+      "name": "graphql",
+      "start": 1700234746949,
+      "end": 1700234746949,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1700234746949,
+      "end": 1700234746949,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1700234746949,
+      "end": 1700234746949,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1700234746949,
+      "end": 1700234746949,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "result": "import { hash } from \"ohash\";\nimport { useRuntimeConfig } from \"#app\";\nimport { encodeQueryParams } from \"../../utils/query.mjs\";\nimport { jsonStringify } from \"../../utils/json.mjs\";\nimport { addPrerenderPath, shouldUseClientDB, withContentBase } from \"../../composables/utils.mjs\";\nimport { useContentPreview } from \"../../composables/preview.mjs\";\nimport { queryContent } from \"./query.mjs\";\nexport const fetchContentNavigation = async (queryBuilder) => {\n  const { content } = useRuntimeConfig().public;\n  if (typeof queryBuilder?.params !== \"function\") {\n    queryBuilder = queryContent(queryBuilder);\n  }\n  const params = queryBuilder.params();\n  const apiPath = content.experimental.stripQueryParameters ? withContentBase(`/navigation/${false ? \"_\" : `${hash(params)}.${content.integrity}`}/${encodeQueryParams(params)}.json`) : withContentBase(false ? `/navigation/${hash(params)}` : `/navigation/${hash(params)}.${content.integrity}.json`);\n  if (!false && true) {\n    addPrerenderPath(apiPath);\n  }\n  if (shouldUseClientDB()) {\n    const generateNavigation = await import(\"./client-db\").then((m) => m.generateNavigation);\n    return generateNavigation(params);\n  }\n  const data = await $fetch(apiPath, {\n    method: \"GET\",\n    responseType: \"json\",\n    params: content.experimental.stripQueryParameters ? void 0 : {\n      _params: jsonStringify(params),\n      previewToken: useContentPreview().getPreviewToken()\n    }\n  });\n  if (typeof data === \"string\" && data.startsWith(\"<!DOCTYPE html>\")) {\n    throw new Error(\"Not found\");\n  }\n  return data;\n};\n",
+      "start": 1700234746949,
+      "end": 1700234746950,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          "/Users/bensonmboci/Desktop/project/portfolio/portfolio/node_modules/@nuxt/content/dist/runtime/legacy/composables/navigation.mjs"
+        ],
+        "names": [],
+        "mappings": "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"
+      }
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1700234746950,
+      "end": 1700234746950,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1700234746950,
+      "end": 1700234746950,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1700234746950,
+      "end": 1700234746950,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1700234746950,
+      "end": 1700234746950,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1700234746950,
+      "end": 1700234746950,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1700234746950,
+      "end": 1700234746950,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1700234746950,
+      "end": 1700234746950,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1700234746950,
+      "end": 1700234746950,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1700234746950,
+      "end": 1700234746950,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1700234746950,
+      "end": 1700234746950,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1700234746950,
+      "end": 1700234746950,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1700234746950,
+      "end": 1700234746950,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1700234746950,
+      "end": 1700234746950,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1700234746950,
+      "end": 1700234746950,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1700234746950,
+      "end": 1700234746950,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-template",
+      "start": 1700234746950,
+      "end": 1700234746950,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1700234746950,
+      "end": 1700234746950,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1700234746950,
+      "end": 1700234746950,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1700234746950,
+      "end": 1700234746950,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1700234746950,
+      "end": 1700234746950,
+      "order": "normal"
+    }
+  ]
+}

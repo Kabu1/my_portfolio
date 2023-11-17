@@ -1,0 +1,222 @@
+{
+  "resolvedId": "/Users/bensonmboci/Desktop/project/portfolio/portfolio/node_modules/@apollo/client/core/ApolloClient.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "import { __assign } from \"tslib\";\nimport { invariant, newInvariantError } from \"../utilities/globals/index.js\";\nimport { ApolloLink, execute } from \"../link/core/index.js\";\nimport { version } from \"../version.js\";\nimport { HttpLink } from \"../link/http/index.js\";\nimport { QueryManager } from \"./QueryManager.js\";\nimport { LocalState } from \"./LocalState.js\";\nvar hasSuggestedDevtools = false;\nimport { mergeOptions } from \"../utilities/index.js\";\nexport { mergeOptions };\nvar ApolloClient = (function () {\n    function ApolloClient(options) {\n        var _this = this;\n        this.resetStoreCallbacks = [];\n        this.clearStoreCallbacks = [];\n        if (!options.cache) {\n            throw newInvariantError(15);\n        }\n        var uri = options.uri, credentials = options.credentials, headers = options.headers, cache = options.cache, documentTransform = options.documentTransform, _a = options.ssrMode, ssrMode = _a === void 0 ? false : _a, _b = options.ssrForceFetchDelay, ssrForceFetchDelay = _b === void 0 ? 0 : _b, _c = options.connectToDevTools, connectToDevTools = _c === void 0 ? typeof window === \"object\" &&\n            !window.__APOLLO_CLIENT__ &&\n            globalThis.__DEV__ !== false : _c, _d = options.queryDeduplication, queryDeduplication = _d === void 0 ? true : _d, defaultOptions = options.defaultOptions, _e = options.assumeImmutableResults, assumeImmutableResults = _e === void 0 ? cache.assumeImmutableResults : _e, resolvers = options.resolvers, typeDefs = options.typeDefs, fragmentMatcher = options.fragmentMatcher, clientAwarenessName = options.name, clientAwarenessVersion = options.version;\n        var link = options.link;\n        if (!link) {\n            link = uri\n                ? new HttpLink({ uri: uri, credentials: credentials, headers: headers })\n                : ApolloLink.empty();\n        }\n        this.link = link;\n        this.cache = cache;\n        this.disableNetworkFetches = ssrMode || ssrForceFetchDelay > 0;\n        this.queryDeduplication = queryDeduplication;\n        this.defaultOptions = defaultOptions || Object.create(null);\n        this.typeDefs = typeDefs;\n        if (ssrForceFetchDelay) {\n            setTimeout(function () { return (_this.disableNetworkFetches = false); }, ssrForceFetchDelay);\n        }\n        this.watchQuery = this.watchQuery.bind(this);\n        this.query = this.query.bind(this);\n        this.mutate = this.mutate.bind(this);\n        this.resetStore = this.resetStore.bind(this);\n        this.reFetchObservableQueries = this.reFetchObservableQueries.bind(this);\n        this.version = version;\n        this.localState = new LocalState({\n            cache: cache,\n            client: this,\n            resolvers: resolvers,\n            fragmentMatcher: fragmentMatcher,\n        });\n        this.queryManager = new QueryManager({\n            cache: this.cache,\n            link: this.link,\n            defaultOptions: this.defaultOptions,\n            documentTransform: documentTransform,\n            queryDeduplication: queryDeduplication,\n            ssrMode: ssrMode,\n            clientAwareness: {\n                name: clientAwarenessName,\n                version: clientAwarenessVersion,\n            },\n            localState: this.localState,\n            assumeImmutableResults: assumeImmutableResults,\n            onBroadcast: connectToDevTools\n                ? function () {\n                    if (_this.devToolsHookCb) {\n                        _this.devToolsHookCb({\n                            action: {},\n                            state: {\n                                queries: _this.queryManager.getQueryStore(),\n                                mutations: _this.queryManager.mutationStore || {},\n                            },\n                            dataWithOptimisticResults: _this.cache.extract(true),\n                        });\n                    }\n                }\n                : void 0,\n        });\n        if (connectToDevTools)\n            this.connectToDevTools();\n    }\n    ApolloClient.prototype.connectToDevTools = function () {\n        if (typeof window === \"object\") {\n            var windowWithDevTools = window;\n            var devtoolsSymbol = Symbol.for(\"apollo.devtools\");\n            (windowWithDevTools[devtoolsSymbol] =\n                windowWithDevTools[devtoolsSymbol] || []).push(this);\n            windowWithDevTools.__APOLLO_CLIENT__ = this;\n        }\n        if (!hasSuggestedDevtools && globalThis.__DEV__ !== false) {\n            hasSuggestedDevtools = true;\n            setTimeout(function () {\n                if (typeof window !== \"undefined\" &&\n                    window.document &&\n                    window.top === window.self &&\n                    !window.__APOLLO_DEVTOOLS_GLOBAL_HOOK__) {\n                    var nav = window.navigator;\n                    var ua = nav && nav.userAgent;\n                    var url = void 0;\n                    if (typeof ua === \"string\") {\n                        if (ua.indexOf(\"Chrome/\") > -1) {\n                            url =\n                                \"https://chrome.google.com/webstore/detail/\" +\n                                    \"apollo-client-developer-t/jdkknkkbebbapilgoeccciglkfbmbnfm\";\n                        }\n                        else if (ua.indexOf(\"Firefox/\") > -1) {\n                            url =\n                                \"https://addons.mozilla.org/en-US/firefox/addon/apollo-developer-tools/\";\n                        }\n                    }\n                    if (url) {\n                        globalThis.__DEV__ !== false && invariant.log(\"Download the Apollo DevTools for a better development \" +\n                            \"experience: %s\", url);\n                    }\n                }\n            }, 10000);\n        }\n    };\n    Object.defineProperty(ApolloClient.prototype, \"documentTransform\", {\n        get: function () {\n            return this.queryManager.documentTransform;\n        },\n        enumerable: false,\n        configurable: true\n    });\n    ApolloClient.prototype.stop = function () {\n        this.queryManager.stop();\n    };\n    ApolloClient.prototype.watchQuery = function (options) {\n        if (this.defaultOptions.watchQuery) {\n            options = mergeOptions(this.defaultOptions.watchQuery, options);\n        }\n        if (this.disableNetworkFetches &&\n            (options.fetchPolicy === \"network-only\" ||\n                options.fetchPolicy === \"cache-and-network\")) {\n            options = __assign(__assign({}, options), { fetchPolicy: \"cache-first\" });\n        }\n        return this.queryManager.watchQuery(options);\n    };\n    ApolloClient.prototype.query = function (options) {\n        if (this.defaultOptions.query) {\n            options = mergeOptions(this.defaultOptions.query, options);\n        }\n        invariant(options.fetchPolicy !== \"cache-and-network\", 16);\n        if (this.disableNetworkFetches && options.fetchPolicy === \"network-only\") {\n            options = __assign(__assign({}, options), { fetchPolicy: \"cache-first\" });\n        }\n        return this.queryManager.query(options);\n    };\n    ApolloClient.prototype.mutate = function (options) {\n        if (this.defaultOptions.mutate) {\n            options = mergeOptions(this.defaultOptions.mutate, options);\n        }\n        return this.queryManager.mutate(options);\n    };\n    ApolloClient.prototype.subscribe = function (options) {\n        return this.queryManager.startGraphQLSubscription(options);\n    };\n    ApolloClient.prototype.readQuery = function (options, optimistic) {\n        if (optimistic === void 0) { optimistic = false; }\n        return this.cache.readQuery(options, optimistic);\n    };\n    ApolloClient.prototype.readFragment = function (options, optimistic) {\n        if (optimistic === void 0) { optimistic = false; }\n        return this.cache.readFragment(options, optimistic);\n    };\n    ApolloClient.prototype.writeQuery = function (options) {\n        var ref = this.cache.writeQuery(options);\n        if (options.broadcast !== false) {\n            this.queryManager.broadcastQueries();\n        }\n        return ref;\n    };\n    ApolloClient.prototype.writeFragment = function (options) {\n        var ref = this.cache.writeFragment(options);\n        if (options.broadcast !== false) {\n            this.queryManager.broadcastQueries();\n        }\n        return ref;\n    };\n    ApolloClient.prototype.__actionHookForDevTools = function (cb) {\n        this.devToolsHookCb = cb;\n    };\n    ApolloClient.prototype.__requestRaw = function (payload) {\n        return execute(this.link, payload);\n    };\n    ApolloClient.prototype.resetStore = function () {\n        var _this = this;\n        return Promise.resolve()\n            .then(function () {\n            return _this.queryManager.clearStore({\n                discardWatches: false,\n            });\n        })\n            .then(function () { return Promise.all(_this.resetStoreCallbacks.map(function (fn) { return fn(); })); })\n            .then(function () { return _this.reFetchObservableQueries(); });\n    };\n    ApolloClient.prototype.clearStore = function () {\n        var _this = this;\n        return Promise.resolve()\n            .then(function () {\n            return _this.queryManager.clearStore({\n                discardWatches: true,\n            });\n        })\n            .then(function () { return Promise.all(_this.clearStoreCallbacks.map(function (fn) { return fn(); })); });\n    };\n    ApolloClient.prototype.onResetStore = function (cb) {\n        var _this = this;\n        this.resetStoreCallbacks.push(cb);\n        return function () {\n            _this.resetStoreCallbacks = _this.resetStoreCallbacks.filter(function (c) { return c !== cb; });\n        };\n    };\n    ApolloClient.prototype.onClearStore = function (cb) {\n        var _this = this;\n        this.clearStoreCallbacks.push(cb);\n        return function () {\n            _this.clearStoreCallbacks = _this.clearStoreCallbacks.filter(function (c) { return c !== cb; });\n        };\n    };\n    ApolloClient.prototype.reFetchObservableQueries = function (includeStandby) {\n        return this.queryManager.reFetchObservableQueries(includeStandby);\n    };\n    ApolloClient.prototype.refetchQueries = function (options) {\n        var map = this.queryManager.refetchQueries(options);\n        var queries = [];\n        var results = [];\n        map.forEach(function (result, obsQuery) {\n            queries.push(obsQuery);\n            results.push(result);\n        });\n        var result = Promise.all(results);\n        result.queries = queries;\n        result.results = results;\n        result.catch(function (error) {\n            globalThis.__DEV__ !== false && invariant.debug(17, error);\n        });\n        return result;\n    };\n    ApolloClient.prototype.getObservableQueries = function (include) {\n        if (include === void 0) { include = \"active\"; }\n        return this.queryManager.getObservableQueries(include);\n    };\n    ApolloClient.prototype.extract = function (optimistic) {\n        return this.cache.extract(optimistic);\n    };\n    ApolloClient.prototype.restore = function (serializedState) {\n        return this.cache.restore(serializedState);\n    };\n    ApolloClient.prototype.addResolvers = function (resolvers) {\n        this.localState.addResolvers(resolvers);\n    };\n    ApolloClient.prototype.setResolvers = function (resolvers) {\n        this.localState.setResolvers(resolvers);\n    };\n    ApolloClient.prototype.getResolvers = function () {\n        return this.localState.getResolvers();\n    };\n    ApolloClient.prototype.setLocalStateFragmentMatcher = function (fragmentMatcher) {\n        this.localState.setFragmentMatcher(fragmentMatcher);\n    };\n    ApolloClient.prototype.setLink = function (newLink) {\n        this.link = this.queryManager.link = newLink;\n    };\n    return ApolloClient;\n}());\nexport { ApolloClient };\n//# sourceMappingURL=ApolloClient.js.map",
+      "start": 1700234742219,
+      "end": 1700234742382,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1700234742382,
+      "end": 1700234742382,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1700234742382,
+      "end": 1700234742382,
+      "order": "pre"
+    },
+    {
+      "name": "content-slot",
+      "start": 1700234742382,
+      "end": 1700234742382,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1700234742382,
+      "end": 1700234742382,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1700234742382,
+      "end": 1700234742382,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1700234742382,
+      "end": 1700234742382,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1700234742382,
+      "end": 1700234742382,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1700234742382,
+      "end": 1700234742382,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1700234742382,
+      "end": 1700234742382,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1700234742382,
+      "end": 1700234742382,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1700234742382,
+      "end": 1700234742382,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1700234742382,
+      "end": 1700234742382,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1700234742382,
+      "end": 1700234742382,
+      "order": "normal"
+    },
+    {
+      "name": "graphql",
+      "start": 1700234742382,
+      "end": 1700234742382,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1700234742382,
+      "end": 1700234742382,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1700234742382,
+      "end": 1700234742382,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1700234742382,
+      "end": 1700234742382,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1700234742383,
+      "end": 1700234742383,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1700234742383,
+      "end": 1700234742383,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1700234742383,
+      "end": 1700234742383,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1700234742383,
+      "end": 1700234742383,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1700234742383,
+      "end": 1700234742383,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1700234742383,
+      "end": 1700234742384,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1700234742384,
+      "end": 1700234742384,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1700234742384,
+      "end": 1700234742384,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1700234742384,
+      "end": 1700234742384,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1700234742384,
+      "end": 1700234742384,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1700234742384,
+      "end": 1700234742385,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1700234742385,
+      "end": 1700234742385,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1700234742385,
+      "end": 1700234742385,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1700234742385,
+      "end": 1700234742385,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1700234742385,
+      "end": 1700234742385,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1700234742385,
+      "end": 1700234742385,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1700234742385,
+      "end": 1700234742385,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1700234742385,
+      "end": 1700234742385,
+      "order": "normal"
+    }
+  ]
+}

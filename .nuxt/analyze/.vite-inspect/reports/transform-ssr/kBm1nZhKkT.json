@@ -1,0 +1,273 @@
+{
+  "resolvedId": "/Users/bensonmboci/Desktop/project/portfolio/portfolio/node_modules/@nuxt/content/dist/runtime/legacy/composables/query.mjs",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "import { joinURL, withLeadingSlash, withoutTrailingSlash } from \"ufo\";\nimport { hash } from \"ohash\";\nimport { useRuntimeConfig } from \"#app\";\nimport { createQuery } from \"../../query/query.mjs\";\nimport { encodeQueryParams } from \"../../utils/query.mjs\";\nimport { jsonStringify } from \"../../utils/json.mjs\";\nimport { addPrerenderPath, shouldUseClientDB, withContentBase } from \"../../composables/utils.mjs\";\nimport { useContentPreview } from \"../../composables/preview.mjs\";\nexport const createQueryFetch = () => async (query) => {\n  const { content } = useRuntimeConfig().public;\n  const params = query.params();\n  const apiPath = content.experimental.stripQueryParameters ? withContentBase(`/query/${process.dev ? \"_\" : `${hash(params)}.${content.integrity}`}/${encodeQueryParams(params)}.json`) : withContentBase(process.dev ? \"/query\" : `/query/${hash(params)}.${content.integrity}.json`);\n  if (!process.dev && process.server) {\n    addPrerenderPath(apiPath);\n  }\n  if (shouldUseClientDB()) {\n    const db = await import(\"./client-db\").then((m) => m.useContentDatabase());\n    return db.fetch(query);\n  }\n  const data = await $fetch(apiPath, {\n    method: \"GET\",\n    responseType: \"json\",\n    params: content.experimental.stripQueryParameters ? void 0 : {\n      _params: jsonStringify(params),\n      previewToken: useContentPreview().getPreviewToken()\n    }\n  });\n  if (typeof data === \"string\" && data.startsWith(\"<!DOCTYPE html>\")) {\n    throw new Error(\"Not found\");\n  }\n  return data;\n};\nexport function queryContent(query, ...pathParts) {\n  const { content } = useRuntimeConfig().public;\n  const queryBuilder = createQuery(createQueryFetch(), {\n    initialParams: typeof query !== \"string\" ? query : {},\n    legacy: true\n  });\n  let path;\n  if (typeof query === \"string\") {\n    path = withLeadingSlash(joinURL(query, ...pathParts));\n  }\n  const originalParamsFn = queryBuilder.params;\n  queryBuilder.params = () => {\n    const params = originalParamsFn();\n    if (path) {\n      params.where = params.where || [];\n      if (params.first && (params.where || []).length === 0) {\n        params.where.push({ _path: withoutTrailingSlash(path) });\n      } else {\n        params.where.push({ _path: new RegExp(`^${path.replace(/[-[\\]{}()*+.,^$\\s/]/g, \"\\\\$&\")}`) });\n      }\n    }\n    if (!params.sort?.length) {\n      params.sort = [{ _file: 1, $numeric: true }];\n    }\n    if (content.locales.length) {\n      const queryLocale = params.where?.find((w) => w._locale)?._locale;\n      if (!queryLocale) {\n        params.where = params.where || [];\n        params.where.push({ _locale: content.defaultLocale });\n      }\n    }\n    return params;\n  };\n  return queryBuilder;\n}\n",
+      "start": 1700234746785,
+      "end": 1700234746955,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1700234746955,
+      "end": 1700234746955,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1700234746955,
+      "end": 1700234746955,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1700234746955,
+      "end": 1700234746955,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1700234746955,
+      "end": 1700234746955,
+      "order": "pre"
+    },
+    {
+      "name": "content-slot",
+      "start": 1700234746955,
+      "end": 1700234746955,
+      "order": "pre"
+    },
+    {
+      "name": "content-slot",
+      "start": 1700234746955,
+      "end": 1700234746955,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1700234746955,
+      "end": 1700234746955,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1700234746955,
+      "end": 1700234746955,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1700234746955,
+      "end": 1700234746955,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1700234746955,
+      "end": 1700234746955,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1700234746956,
+      "end": 1700234746956,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1700234746956,
+      "end": 1700234746956,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1700234746956,
+      "end": 1700234746956,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1700234746956,
+      "end": 1700234746956,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1700234746956,
+      "end": 1700234746956,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1700234746956,
+      "end": 1700234746956,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1700234746956,
+      "end": 1700234746956,
+      "order": "normal"
+    },
+    {
+      "name": "graphql",
+      "start": 1700234746956,
+      "end": 1700234746956,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1700234746956,
+      "end": 1700234746956,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1700234746956,
+      "end": 1700234746956,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1700234746956,
+      "end": 1700234746956,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "result": "import { joinURL, withLeadingSlash, withoutTrailingSlash } from \"ufo\";\nimport { hash } from \"ohash\";\nimport { useRuntimeConfig } from \"#app\";\nimport { createQuery } from \"../../query/query.mjs\";\nimport { encodeQueryParams } from \"../../utils/query.mjs\";\nimport { jsonStringify } from \"../../utils/json.mjs\";\nimport { addPrerenderPath, shouldUseClientDB, withContentBase } from \"../../composables/utils.mjs\";\nimport { useContentPreview } from \"../../composables/preview.mjs\";\nexport const createQueryFetch = () => async (query) => {\n  const { content } = useRuntimeConfig().public;\n  const params = query.params();\n  const apiPath = content.experimental.stripQueryParameters ? withContentBase(`/query/${false ? \"_\" : `${hash(params)}.${content.integrity}`}/${encodeQueryParams(params)}.json`) : withContentBase(false ? \"/query\" : `/query/${hash(params)}.${content.integrity}.json`);\n  if (!false && true) {\n    addPrerenderPath(apiPath);\n  }\n  if (shouldUseClientDB()) {\n    const db = await import(\"./client-db\").then((m) => m.useContentDatabase());\n    return db.fetch(query);\n  }\n  const data = await $fetch(apiPath, {\n    method: \"GET\",\n    responseType: \"json\",\n    params: content.experimental.stripQueryParameters ? void 0 : {\n      _params: jsonStringify(params),\n      previewToken: useContentPreview().getPreviewToken()\n    }\n  });\n  if (typeof data === \"string\" && data.startsWith(\"<!DOCTYPE html>\")) {\n    throw new Error(\"Not found\");\n  }\n  return data;\n};\nexport function queryContent(query, ...pathParts) {\n  const { content } = useRuntimeConfig().public;\n  const queryBuilder = createQuery(createQueryFetch(), {\n    initialParams: typeof query !== \"string\" ? query : {},\n    legacy: true\n  });\n  let path;\n  if (typeof query === \"string\") {\n    path = withLeadingSlash(joinURL(query, ...pathParts));\n  }\n  const originalParamsFn = queryBuilder.params;\n  queryBuilder.params = () => {\n    const params = originalParamsFn();\n    if (path) {\n      params.where = params.where || [];\n      if (params.first && (params.where || []).length === 0) {\n        params.where.push({ _path: withoutTrailingSlash(path) });\n      } else {\n        params.where.push({ _path: new RegExp(`^${path.replace(/[-[\\]{}()*+.,^$\\s/]/g, \"\\\\$&\")}`) });\n      }\n    }\n    if (!params.sort?.length) {\n      params.sort = [{ _file: 1, $numeric: true }];\n    }\n    if (content.locales.length) {\n      const queryLocale = params.where?.find((w) => w._locale)?._locale;\n      if (!queryLocale) {\n        params.where = params.where || [];\n        params.where.push({ _locale: content.defaultLocale });\n      }\n    }\n    return params;\n  };\n  return queryBuilder;\n}\n",
+      "start": 1700234746956,
+      "end": 1700234746956,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          "/Users/bensonmboci/Desktop/project/portfolio/portfolio/node_modules/@nuxt/content/dist/runtime/legacy/composables/query.mjs"
+        ],
+        "names": [],
+        "mappings": "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"
+      }
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1700234746956,
+      "end": 1700234746956,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1700234746956,
+      "end": 1700234746956,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1700234746956,
+      "end": 1700234746956,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1700234746956,
+      "end": 1700234746956,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1700234746956,
+      "end": 1700234746956,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1700234746956,
+      "end": 1700234746956,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1700234746956,
+      "end": 1700234746956,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1700234746956,
+      "end": 1700234746956,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1700234746956,
+      "end": 1700234746956,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1700234746956,
+      "end": 1700234746956,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1700234746956,
+      "end": 1700234746956,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1700234746956,
+      "end": 1700234746956,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1700234746956,
+      "end": 1700234746956,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1700234746956,
+      "end": 1700234746956,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1700234746956,
+      "end": 1700234746956,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-template",
+      "start": 1700234746956,
+      "end": 1700234746956,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1700234746956,
+      "end": 1700234746956,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1700234746956,
+      "end": 1700234746956,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1700234746956,
+      "end": 1700234746956,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1700234746956,
+      "end": 1700234746956,
+      "order": "normal"
+    }
+  ]
+}
